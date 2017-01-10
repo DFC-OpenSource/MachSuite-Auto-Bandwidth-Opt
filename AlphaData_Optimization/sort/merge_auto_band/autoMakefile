@@ -1,0 +1,14 @@
+SRC=sort.cpp
+BW=512
+TOP_FUNC="workload"
+EXEC=/curr/cody/Spark_ACC/j2fa/opt/mars_opt/src/mars_opt 
+
+all:
+	cp ${SRC} ${SRC}.bak	# backup
+	${EXEC} ${SRC} -e c -p bitwidth_opt -a ${TOP_FUNC} -a ${BW}
+	mv rose_${SRC} ${SRC}
+	rm rose* gmon.out
+
+restore:
+	mv ${SRC}.bak ${SRC}
+
